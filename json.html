@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title></title>
+</head>
+<body>
+
+	<h1 align="center">Currency change rate based on EUR are following:</h1>
+	<p align="center">Date: <span id = "date"></span><br/><br/>
+	   Base: <span id = "base"></span><br/><br/>
+	   USD: <span id = "USD"></span><br/><br/>
+	   AED: <span id = "AED"></span><br/><br/>
+	   NPR: <span id = "NPR"></span><br/><br/>
+	   INR: <span id = "INR"></span><br/><br/>
+	</p>
+
+	<script>
+		
+		const url = 'http://data.fixer.io/api/latest?access_key=dddc5665c9ad0395e83aaa104245dc16&format=1';
+		async function getData() {
+			const response = await fetch(url);
+			const data = await response.json();
+			const {date, base} = data;
+			const {AED, USD, NPR, INR} = data.rates;
+			document.getElementById('date').textContent = date;
+			document.getElementById('base').textContent = base;
+			document.getElementById('USD').textContent = USD;
+			document.getElementById('AED').textContent = AED;
+			document.getElementById('NPR').textContent = NPR;
+			document.getElementById('INR').textContent = INR;
+
+		}
+		getData();
+
+	</script>
+</body>
+</html>
